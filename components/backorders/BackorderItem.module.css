@@ -1,0 +1,137 @@
+.item {
+  margin: 1rem 0;
+}
+
+.image {
+  width: 100%;
+  height: 20rem;
+  overflow: hidden;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+.image img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.content {
+  display: grid;
+  grid: 50px / 20% 7% 7% 10% 18% 8% 10% 10% 8%;
+  text-align: left;
+  padding: 1rem;
+  font-size: 0.75rem;
+}
+
+.content h3 {
+  font-size: 1rem;
+  color: #2c292b;
+  margin-block: 0em;
+}
+
+.actions {
+  text-align: center;
+}
+
+.actions button {
+  margin-left: .25em;
+  font: inherit;
+  cursor: pointer;
+  background-color: #39015c;
+  color: white;
+  /* padding: 0.5rem 1.5rem; */
+  border: 1px solid #00775969;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  width: 80px;
+  height: 30px;
+}
+
+.actions button:hover,
+.actions button:active {
+  background-color: #058856;
+  border-color: #0e93a56e;
+}
+
+.progress {
+  text-align: center;
+}
+
+.stepmenu {
+  list-style-type:none;
+  width:750px;
+  margin:5px auto;
+  font-size: .8rem;
+  z-index: 3;
+  }
+
+  .stepmenu li {
+    box-sizing: border-box; 
+    float: left;
+    background: #ddd;
+    height: 40px;
+    text-align: center;
+    padding: 10px 10px 10px 40px;
+    position: relative;
+    margin-left: 10px
+    }
+    .stepmenu li:before {
+      content: '';
+      position: absolute;
+      border: 20px solid transparent;
+      border-left-color: #fff;
+      top:0px;
+      right: -50px;
+    }
+    .stepmenu li:after {
+      content: '';
+      position: absolute;
+      border: 20px solid transparent;
+      border-left-color: #ddd;
+      top:0px;
+      right: -40px;
+    }
+    .stepmenu li:nth-child(1) {
+      z-index:600;
+      margin-left: 0;
+      padding-left: 30px
+    }
+    .stepmenu li:nth-child(2) {
+      z-index:500;
+    }
+    .stepmenu li:nth-child(3) {
+      z-index:400;
+    }
+    .stepmenu li:nth-child(4) {
+      z-index:300;
+    }
+    .stepmenu li:nth-child(5) {
+      z-index:200;      
+    }
+    .stepmenu li:nth-child(6) {
+      z-index:100;
+      padding-right:30px
+    }
+    .stepmenu li:nth-child(6):after,
+    .stepmenu li:nth-child(6):before {
+      border: none
+    }
+.stepmenu li.current {
+  background: rgba(51,122,183, 0.75);
+  color: white;
+}
+.stepmenu li.current:after {
+  border-left-color: rgba(51,122,183, 0.75);
+}
+.stepmenu li.complete {
+  background: rgba(51,122,183, 0.4);
+  color: white;
+}
+.stepmenu li.complete:after {
+  border-left-color: rgba(51,122,183, 0.4);
+}
+
+.chevron {
+  display: flex;
+}

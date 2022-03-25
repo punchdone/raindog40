@@ -23,22 +23,23 @@ function MainNavigation() {
             <li>
               <Link href='/auth'>Login</Link>
             </li>
-          )}
-          {session?.user.role === '621ec1e2b9068d5a5df7e85a' && (
+          )} */}
+          {/* {session?.user.role === '621ec1e2b9068d5a5df7e85a' && ( */}
             <li>
               <Link href='/projects/orders'>OrderDrop</Link>
             </li>
-          )}
-          {session?.user.role === '621ec1e2b9068d5a5df7e85a' && (
+          )
+          {/* } */}
+          {/* {session?.user.role === '621ec1e2b9068d5a5df7e85a' && (
             <li>
               <Link href='/users'>User List</Link>
             </li>
-          )}
+          )} */}
           {/* {(session?.user.role === '621ec1e2b9068d5a5df7e85a' || session?.user.role === '621ec1f0b9068d5a5df7e85b') && (
             <li>
               <Link href='/backorders/table'>Backorder Table</Link>
             </li>
-          )} */}
+          )}
           {/* {session && ( */}
             <li>
               <Link href='/backorders'>Backorders</Link>

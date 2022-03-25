@@ -1,0 +1,35 @@
+.formTitle {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.commentForm {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.commentForm button {
+    margin-left: .25em;
+    font: inherit;
+    cursor: pointer;
+    background-color: #39015c;
+    color: white;
+    /* padding: 0.5rem 1.5rem; */
+    border: 1px solid #00775969;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    width: 80px;
+    height: 30px;
+}
+
+.commentForm input {
+    margin-top: 15px;
+    height: 30px;
+    width: 300px;
+}
+.commentForm label {
+    position: absolute;
+    font-size: .75rem;
+}

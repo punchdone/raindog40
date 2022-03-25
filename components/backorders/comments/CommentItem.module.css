@@ -1,0 +1,7 @@
+
+.commentGrid {
+    display: grid;
+    grid: 25px / 15% 15% 50% 20%;
+    text-align: center;
+    border-bottom: 3px black;
+}

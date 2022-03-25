@@ -1,0 +1,15 @@
+.commentTitle {
+    text-align: center;
+}
+
+.commentGrid {
+    display: grid;
+    grid: 25px / 15% 15% 50% 20%;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
+.commentList {
+    list-style-type: none;
+    padding-inline-start: 0px;
+}

@@ -1,0 +1,73 @@
+/* .items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 20rem;
+  overflow: auto;
+} */
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .actions {
+    text-align: right;
+  }
+  
+  .actions button {
+    font: inherit;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #8a2b06;
+    padding: 0.5rem 2rem;
+    border-radius: 25px;
+    margin-left: 1rem;
+  }
+  
+  .actions button:hover,
+  .actions button:active {
+    background-color: #5a1a01;
+    border-color: #5a1a01;
+    color: white;
+  }
+  
+  .actions .button--alt {
+    color: #8a2b06;
+  }
+  
+  .actions .button {
+    background-color: #8a2b06;
+    color: white;
+  }
+  
+  /* Style inputs */
+  .items {
+    width: 100%;
+    padding: 0px 10px;
+    margin: 2px 0;
+    display: flex;
+    /* border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; */
+  }
+  
+  .label {
+    display: inline-block;
+    width: 20%;
+  }
+  
+  .formy {
+    display: inline-block;
+    width: 40%;
+  }
+
+  .planDate {
+    margin-block-start: 0px;
+    margin-left: 25px;
+    font-size: 0.8rem;
+  }
