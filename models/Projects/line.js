@@ -30,6 +30,8 @@ const lineSchema = new Schema({
     comment: {
         type: String
     }
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.models.line || mongoose.model('line', lineSchema);

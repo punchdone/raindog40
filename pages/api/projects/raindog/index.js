@@ -6,14 +6,14 @@ export default async function handler(req, res) {
 
         const tokenFetch = await axios.post('https://dev-raindog.pantheonsite.io/rest/user/token.json')
         const token = tokenFetch.data.token;
-        console.log('token = ' + token);
+        // console.log('token = ' + token);
 
         const userInfo = { "username": "sreader", "password": "rudy4joy" };
         const project = await axios.post('https://dev-raindog.pantheonsite.io/rest/user/login.json', userInfo);
         const sessionId = project.data.sessid;
-        console.log('sessionId = ' + sessionId);
+        // console.log('sessionId = ' + sessionId);
 
-        console.log(req.body);
+        // console.log(req.body);
 
         const woUrl = 'https://dev-raindog.pantheonsite.io/rest/node.json';
        
@@ -35,7 +35,7 @@ export default async function handler(req, res) {
             withCredentials: true
         });
         const projectsData = await projects.json();
-        console.log(projectsData);
+        // console.log(projectsData);
 
         return res.status(200).json(projectsData);
     } else {
@@ -52,7 +52,7 @@ export default async function handler(req, res) {
         const projectsUrl = 'https://dev-raindog.pantheonsite.io/rest/node.json';
         const projects = await fetch(projectsUrl);
         const projectsData = await projects.json();
-        // console.log(projectsData);
+        console.log(projectsData);
 
         return res.status(200).json(projectsData);
     };

@@ -28,6 +28,9 @@ function MainNavigation() {
             <li>
               <Link href='/projects/orders'>OrderDrop</Link>
             </li>
+            <li>
+              <Link href='/projects/new'>New Project</Link>
+            </li>
           )
           {/* } */}
           {/* {session?.user.role === '621ec1e2b9068d5a5df7e85a' && (

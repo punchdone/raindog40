@@ -35,7 +35,7 @@ function OrderDrop() {
       const channelCode = channelData.find(
         ({ company }) => company === dealerName
       );
-    //   console.log(channelCode);
+      console.log(channelCode);
     //   console.log(sortedChannels);
       setChannels(sortedChannels);
       setChannelCode(channelCode);
@@ -60,6 +60,7 @@ function OrderDrop() {
   const dropFileHandler = (e) => {
     e.preventDefault();
     setHighlighted(false);
+    let lineEntryArray = [];
 
     Array.from(e.dataTransfer.files)
       //.filter((file) => file.type === "text/ord")
@@ -163,7 +164,7 @@ function OrderDrop() {
         // let breakLength = ('[Cabinets]').length;
         // console.log('[Cabinets] length = ' + breakLength);
         // let lines = [];
-        let newLine = [];
+        let newLine = {};
         while ((index = text.indexOf("[Cabinets]", startIndex)) > -1) {
           indices.push(index);
           startIndex = index + "[Cabinets]".length;
@@ -183,114 +184,57 @@ function OrderDrop() {
 
   const productionSubmitHandler = async () => {
 
-    console.log(customer);
-    console.log(lines);
-
-    // const projectData = {
-    //     "title_field": {
-    //         "und": [
-    //             { "value": "Inside of the React Component" }
-    //         ]
-    //     },
-    //     "type": "wo_projects"
-    // };
-
-    // const tokenFetch = await axios.post('https://dev-raindog.pantheonsite.io/rest/user/token.json');
-    // const token = tokenFetch.data.token;
-    // console.log(token);
-    // const loginDetails = { username: 'sreader', password: 'rudy4joy'};
-    // const headers = {
-    //     'Content-Type': 'application/json',
-    //     'X-CSRF-token': token
-    // };
-
-    // const projectList = await axios.get('https://dev-raindog.pantheonsite.io/rest/nodes.json', { headers });
-    // console.log(projectList);
-    // const userLogin = await axios.post('https://dev-raindog.pantheonsite.io/rest/user/login.json', loginDetails, headers);
-    // console.log(userLogin);
-    // await fetch('https://dev-raindog.pantheonsite.io/rest/user/token.json', {
-    //     method: 'POST',
-    //     mode: 'cors',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     }
-    // }).then((response) => {
-    //     console.log(response);
-    // }).catch((error) => {
-    //     alert('Problem while getting token!');
-    // });
-    // const nodes = await fetch('https://dev-raindog.pantheonsite.io/rest/nodes.json');
-    // // const nodeData = await nodes.json();
-    // console.log(nodes);
-    // const token = await fetch("https://dev-raindog.pantheonsite.io/rest/user/token.json", {
-    //     method: "POST",
-    //     // body: {
-    //     //     "username": "sreader",
-    //     //     "password": "rudy4joy"
-    //     // },
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //         // "Access-Control-Allow-Origin": "*"
-    //     }
-    // });
-    // console.log(token);
-    // const sessionId = await token.json();
-    // console.log('sessionId = ' + sessionId);
-    // console.log(sessionId);
-    // const token = 'G_mx_4TNEv6wAVT45phg1KDgpbHT7muMmBI230CPwIE';
-    // const cookie = 'JxYwrJQ1Z8Lre9kBXnFkOYJSVCUpiYr38TWVYS_gXzI';
-    // const userLogin = await fetch('https://dev-raindog.pantheonsite.io/rest/user/login.json', {
-    //     method: "POST",
-    //     body: {
-    //         "username": "sreader",
-    //         "password": "rudy4joy"
-    //     },
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //         "X-CSRF-Token": token
-    //     }
-    // });
-    // console.log(userLogin);
-
-    // const response4 = await axios('/api/projects');
-    // // const apiResponse4 = await response4.json();
-    // console.log(response4.data);
-
-    // const response = await fetch('https://dev-raindog.pantheonsite.io/rest/node.json')
-    // const data = await response.json();
-    // console.log(data);
-
-    // const response2 = await axios('https://dev-raindog.pantheonsite.io/rest/node.json');
-    // // const apiResponse2 = response2.data.json();
-    // console.log(response2.data);
     const projectTitle = customer.dealerName + '-' + customer.projectName;
     console.log(projectTitle);
-    const response = await axios.post("/api/projects", { 'title': projectTitle });
-    console.log(response.data.nid);
-    const fullProject = await axios('/api/projects/' + response.data.nid + '.json');
-    console.log(fullProject);
 
-    // const response3 = await axios.post('https://dev-raindog.pantheonsite.io/rest/node.json', { type: 'wo_projects' });
-    // console.log(response3);
+    const response = await axios.post("/api/projects/raindog", { 'title': projectTitle });
+    console.log('response = ');
+    console.log(response);
+    console.log('nid = ' + response.data.nid);
 
-    // const response3 = await axios.post('/api/projects', projectData);
-    // console.log(response3);
+    const fullProject = await axios('/api/projects/raindog/' + response.data.nid);
+    console.log('WO project # = ' + fullProject.data.field_wo_project_num.und[0].value);
 
-    // const addItem = await axios.post('https://dev-raindog.pantheonsite.io/rest/node.json', { "title": "Fighting it!" });
-    // console.log(addItem);
-    // const presponse = await fetch('https://dev-raindog.pantheonsite.io/rest/node.json', {
-    //     method: "POST",
-    //     body: JSON.stringify(projectData),
-    //     // body: projectData,
-    //     // body: {"title_field": "From inside react"},
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //         // "X-CSRF-Token": token,
-    //         // "Cookie": cookie
-    //     }
-    // });
-    // const pdata = await presponse.json();
-    // console.log(pdata);
+    setCustomer((prevState) => {
+      return { ... prevState, 
+        woProjectNum: fullProject.data.field_wo_project_num.und[0].value,
+        nid: response.data.nid
+      }
+    }, {async function() {
+      console.log('customer = ');
+      console.log(customer);
+      const newOrder = await axios.post('/api/projects', customer);
+      console.log('newOrder = ' + newOrder.data._id);
+    }});
+    
+
+    const newOrder = await axios.post('/api/projects', customer);
+    console.log('newOrder = ' + newOrder.data._id);
+    
+    let lineArray = [];
+    lines.map((line) => {
+      console.log('comment = ' + line[0][8]);
+      lineArray.push({
+        "lineNum": line[0][0],
+        "configCode": line[0][1],
+        "quantity": line[0][7],
+        "width": line[0][2],
+        "height": line[0][3],
+        "depth": line[0][4],
+        "hinging": line[0][5],
+        "ends": line[0][6],
+        "comment": line[0][8]
+      })
+    });
+    // console.log(lineArray);
+
+    let lineEntryArray = [];
+    lineArray.map(async (line) => {
+      const lineResponse = await axios.post("/api/projects/" + newOrder.data._id + "/lines", line);
+      lineEntryArray.push({ '_id': lineResponse.data._id });
+      // console.log('lineId = ' + lineResponse.data._id);
+    });
+
     alert("Went to get production number!");
   };
 
@@ -414,7 +358,7 @@ function OrderDrop() {
           <select
             className={classes.channelDrop}
             ref={channelInputRef}
-            defaultValue={channelCode.nid}
+            value={channelCode.nid}
             onChange={handleChannelChange}
           >
             {channelOptions}

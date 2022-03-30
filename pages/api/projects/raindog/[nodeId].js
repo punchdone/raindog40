@@ -4,9 +4,9 @@ async function handler(req, res) {
     const nid = req.query.nodeId;
     
     const projectUrl = 'https://dev-raindog.pantheonsite.io/rest/node/' + nid + '.json';
-    console.log(projectUrl);
+    // console.log(projectUrl);
     const project = await axios(projectUrl);
-    console.log(project);
+    // console.log(project);
 
     return res.status(200).json(project.data);
 

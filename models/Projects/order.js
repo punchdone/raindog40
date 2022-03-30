@@ -12,6 +12,9 @@ const orderSchema = new Schema({
     woProjectNum: {
         type: String
     },
+    nid: {
+        type: Number
+    },
     projectNum: {
         type: String
     },
@@ -37,7 +40,7 @@ const orderSchema = new Schema({
     doorStyle: {
         type: String
     },
-    drawerFrontStyle: {
+    drawerFront: {
         type: String
     },
     hinge: {
@@ -58,6 +61,16 @@ const orderSchema = new Schema({
             ref: 'line'
         }
     ]
+}, {
+    timestamps: true,
 });
 
-module.exports = mongoose.models.order || mongoose.model('order', orderSchema);
+orderSchema.pre('remove', async function() {
+    await Line.remove({
+        _id: {
+            $in: this.lines
+        }
+    });
+});
+
+module.exports = mongoose.models.order || mongoose.model('order', orderSchema); 
