@@ -29,7 +29,10 @@ function MainNavigation() {
               <Link href='/projects/orders'>OrderDrop</Link>
             </li>
             <li>
-              <Link href='/projects/new'>New Project</Link>
+              <Link href='/projects/new'>New WB/DB Project</Link>
+            </li>
+            <li>
+              <Link href='/projects/newSummit'>New Summit Project</Link>
             </li>
           )
           {/* } */}

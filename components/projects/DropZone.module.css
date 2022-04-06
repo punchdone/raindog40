@@ -1,0 +1,35 @@
+.dropZone {
+    padding: 30px;
+    font-size: 1.5rem;
+    color: white;
+    font-style: bold;
+    text-align: center;
+    margin: 10px auto 10px;
+    background-color: #c291e2;
+    border-radius: 25px;
+    width: 50%;
+    height: 100px;
+}
+
+.production {
+    display: block;
+}
+
+.production button {
+    position: relative;
+    left: -45%;
+    float: right;
+    font: inherit;
+    cursor: pointer;
+    background-color: #39015c;
+    color: white;
+    /* padding: 0.5rem 1.5rem; */
+    border: 1px solid #00775969;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin: 0px auto 10px;
+    text-align: center;
+    width: 10%px;
+    height: 40px;
+  }

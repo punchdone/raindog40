@@ -7,6 +7,9 @@ const projectSchema = new Schema({
     nid: {
         type: Number
     },
+    proposalNum: {
+        type: String
+    },
     woProjectNum: {
         type: String
     },
@@ -14,6 +17,12 @@ const projectSchema = new Schema({
         type: String
     },
     projectName: {
+        type: String
+    },
+    specialSauce: {
+        type: String
+    },
+    productLine: {
         type: String
     },
     rooms: [

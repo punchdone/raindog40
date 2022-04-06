@@ -17,6 +17,7 @@ function NewProjectPage() {
         const data = await response.json();
         console.log(data);
     }
+    
     return (
         <Fragment>
             <Head>

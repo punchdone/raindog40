@@ -1,0 +1,41 @@
+.orderHeader {
+    margin: 60px 25px 0px;
+    border: solid 1px grey;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.headerLine {
+    display: flex;
+    flex-direction: row;
+}
+
+/* .headerLabel .headerItem .headerLine {
+    display: inline;
+} */
+
+.headerLabel {
+    width: 20%;
+}
+
+.orderHeader h2 {
+    margin-block-start: 0px;
+    margin-block-end: 10px;
+
+}
+.lineHeader {
+    display: grid;
+    grid: 50px/ 8% 12% 8% 8% 5% 8% 5% 8% 8% 8% 22%;
+    margin: 25px 25px 0px;
+    text-align: center;
+    font-weight: bold;
+    height: 25px;
+}
+
+.line {
+    display: grid;
+    grid: 50px/ 8% 12% 8% 8% 5% 8% 5% 8% 8% 8% 22%;
+    text-align: left;
+    min-height: 50px;
+    overflow: auto;
+}

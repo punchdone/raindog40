@@ -52,7 +52,6 @@ export default async function handler(req, res) {
         const projectsUrl = 'https://dev-raindog.pantheonsite.io/rest/node.json';
         const projects = await fetch(projectsUrl);
         const projectsData = await projects.json();
-        console.log(projectsData);
 
         return res.status(200).json(projectsData);
     };

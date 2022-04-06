@@ -207,10 +207,6 @@ function OrderDrop() {
       console.log('newOrder = ' + newOrder.data._id);
     }});
     
-
-    const newOrder = await axios.post('/api/projects', customer);
-    console.log('newOrder = ' + newOrder.data._id);
-    
     let lineArray = [];
     lines.map((line) => {
       console.log('comment = ' + line[0][8]);
