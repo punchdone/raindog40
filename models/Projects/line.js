@@ -6,6 +6,9 @@ const lineSchema = new Schema({
     lineNum: {
         type: Number
     },
+    type: {
+        type: String,
+    },
     configCode: {
         type: String
     },
@@ -28,6 +31,9 @@ const lineSchema = new Schema({
         type: String
     },
     comment: {
+        type: String
+    },
+    raindogLineItemId: {
         type: String
     }
 }, {

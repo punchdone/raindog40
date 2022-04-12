@@ -1,0 +1,19 @@
+.list {
+    display: flex;
+    flex-flow: row-wrap;
+    align-items: center;
+    padding: 0 1.5rem;
+    width: 100%;
+}
+
+.list div {
+    width: 30rem;
+}
+
+/* .list div:nth-of-type(4) {
+    text-align: center;
+}
+
+.list div:nth-of-type(5) {
+    text-align: right;
+} */

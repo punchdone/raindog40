@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { Fragment } from 'react';
 
-import NewProjectForm from '../../components/projects/NewProjectForm';
+import NewProjectForm from '../../components/projects/Wynnbrooke/NewProjectForm';
 
 function NewProjectPage() {
 

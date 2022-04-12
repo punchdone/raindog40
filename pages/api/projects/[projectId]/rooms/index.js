@@ -17,6 +17,9 @@ export default async function handler(req, res) {
         );
         res.status(201).json(room);
     } else {
-        return res.status(202).json({ message: 'these lines can be reached through the project' });
+        console.log(req.query);
+        // const project = await Project.find({ proposalNum: })
+
+        return res.status(200).json({ message: 'these lines can be reached through the project' });
     }
 };

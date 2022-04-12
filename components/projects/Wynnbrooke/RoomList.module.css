@@ -1,0 +1,56 @@
+.header {
+    display: flex;
+    flex-flow: row-wrap;
+    align-items: center;
+    padding: 0 1.5rem;
+    width: 80%;
+
+}
+
+.header label {
+    font-size: 0.8rem;
+    width: 30rem;
+    font-weight: bold;
+}
+
+.header label:nth-of-type(4) {
+    text-align: center;
+}
+
+.list {
+    display: flex;
+    flex-flow: row-wrap;
+    align-items: center;
+    padding: 0 1.5rem;
+    width: 80%;
+}
+
+.list div {
+    width: 30rem;
+}
+
+.list div:nth-of-type(4) {
+    text-align: center;
+}
+
+.list div:nth-of-type(5) {
+    text-align: right;
+}
+
+.total {
+    display: flex;
+    flex-flow: row-wrap;
+    align-items: right;
+    justify-content: right;
+    width: 80%;
+    padding: 0 1.5rem;
+}
+
+.total div {
+    text-align: left;
+}
+
+.listBlock {
+    display: flex;
+    flex-flow: column;
+}

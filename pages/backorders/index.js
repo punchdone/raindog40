@@ -109,7 +109,8 @@ function BackorderPage(props) {
         <Fragment>
             {/* <div><h3>{session?.user.name}</h3></div> */}
             <BackorderList backorders={backorders} onFilter={filterHandler} />
-        </Fragment> ) || <p>Not authorized!</p>
+        </Fragment> 
+        {/* ) || <p>Not authorized!</p> */}
         {/* } */}
         </div>
     )

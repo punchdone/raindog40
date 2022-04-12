@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { Fragment } from 'react';
 
-import NewSummitForm from '../../components/projects/NewSummitForm';
+import NewSummitForm from '../../components/projects/Summit/NewSummitForm';
 
 function newSummitProjectPage() {
     return (

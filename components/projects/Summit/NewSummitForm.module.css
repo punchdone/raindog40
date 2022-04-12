@@ -55,3 +55,23 @@
     background-color: #058856;
     border-color: #0e93a56e;
   }
+
+  .listBlock {
+    display: flex;
+    flex-flow: column;
+}
+
+.header {
+    display: flex;
+    flex-flow: row-wrap;
+    align-items: center;
+    padding: 0 1.5rem;
+    width: 80%;
+
+}
+
+.header label {
+    font-size: 0.8rem;
+    width: 30rem;
+    font-weight: bold;
+}

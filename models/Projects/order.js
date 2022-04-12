@@ -1,19 +1,17 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 mongoose.Promise = global.Promise;
-const geography = require('../geography');
 const line = require('./line');
 
 const orderSchema = new Schema({
-    createdDate: {
-        type: Date,
-        Default: Date.now()
-    },
     woProjectNum: {
         type: String
     },
     nid: {
         type: Number
+    },
+    orderRaindogId: {
+        type: String
     },
     projectNum: {
         type: String
@@ -21,38 +19,61 @@ const orderSchema = new Schema({
     poNum: {
         type: String
     },
-    dealerName: {
-        type: String
-    },
-    dealerCode: {
-        type: String
-    },
-    projectName: {
-        type: String
-    },
     roomName: { 
         type: String
     },
-    geography: {
-        type: Schema.Types.ObjectId,
-        ref: 'geography'
+    productLine: {
+        type: String
+    },
+    construction: {
+        type: String
+    },
+    material: {
+        type: String
+    },
+    interior: {
+        type: String
+    },
+    drawerType: {
+        type: String
     },
     doorStyle: {
         type: String
     },
-    drawerFront: {
+    doorType: {
         type: String
     },
-    hinge: {
+    doorContruction: {
         type: String
     },
-    guide: {
+    railSize: {
+        type: String
+    },
+    ieProfile: {
+        type: String
+    },
+    oeProfile: {
+        type: String
+    }, 
+    panelProfile: {
+        type: String
+    },
+    topDrawerType: {
+        type: String
+    },
+    hinging: {
+        type: String
+    },
+    guides: {
         type: String
     },
     material: {
         type: String
     },
     finish: {
+        type: String
+    },
+    finishType: {
         type: String
     },
     lines: [

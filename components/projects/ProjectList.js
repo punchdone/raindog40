@@ -1,12 +1,14 @@
 // import projectPad from '../../helpers/projectPad';
-import channelCode from '../../helpers/channel';
+// import channelCodeLookup from '../../helpers/channel';
 import Card from '../ui/Card';
 import classes from './ProjectList.module.css';
+import ProjectItem from './ProjectItem';
+
 
 function ProjectList(props) {
     const projects = props.projects;
-    console.log(projects);
-    console.log(projects.length);
+    // console.log(projects);
+    // console.log(projects.length);
 
     // console.log(props.projects);
 
@@ -23,24 +25,21 @@ function ProjectList(props) {
 
     const projectList = 
         projects.map(project => (
-            <div className={classes.list} key={project._id}>
-                <div>{project.woProjectNum}</div>
-                <div>{project.dealerCode}</div>
-                <div>
-                    {project.projectName}
-                </div>
-                <div>{project.productLine}</div>
-            </div>
-        ));
+                <ProjectItem key={project._id} project={project} />
+            )
+        );
 
     return (
         <Card>
              <div className={classes.listBlock}>
                 <div className={classes.header}>
-                    <label htmlFor='woProjectNum'>Production WO#</label>
-                    <label htmlFor='dealerCode'>Channel</label>
-                    <label htmlFor='projectName'>Project Name</label>
-                    <label htmlFor='productLine'>Product Line</label>
+                    <label htmlFor='woProjectNum'>Project#</label>
+                    <label htmlFor='RoomNum'>Project Name</label>
+                    <label htmlFor='dealerCode'>Room Name</label>
+                    <label htmlFor='projectName'>Order Type</label>
+                    <label htmlFor='roomName'>Order Status</label>
+                    <label htmlFor='productLine'></label>
+                    <label htmlFor='order'>Order#</label>
                 </div>
                 {projectList}
             </div>

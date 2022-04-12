@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
 
 import classes from './RoomList.module.css';
-import orderType from '../../helpers/orderType';
-import roomPad from '../../helpers/roomPad';
+import orderType from '../../../helpers/orderType';
+import roomPad from '../../../helpers/roomPad';
 
 function RoomList(props) {
 

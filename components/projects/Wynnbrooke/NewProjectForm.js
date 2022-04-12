@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import classes from './NewProjectForm.module.css';
 import RoomList from './RoomList';
 import NewRoomForm from './NewRoomForm';
-import channelCode from '../../helpers/channel';
+import channelCode from '../../../helpers/channel';
 
 // const roomList = [
 //     {roomName: 'Kitchen Perimeter', orderType: 1, orderCheck: true, orderTotal: 100},
@@ -135,7 +135,6 @@ function NewProjectForm(props) {
         router.push('/projects');
     };
     
-
     return (
         <Fragment>
         <h2>New Project</h2>

@@ -1,10 +1,10 @@
 import { useRef, Fragment, useState } from 'react';
 import { useRouter } from 'next/router';
 import { parse } from 'papaparse';
+import axios from 'axios';
 
 import classes from './NewRoomForm.module.css';
-import DropZone from './DropZone';
-import axios from 'axios';
+import DropZone from '../DropZone';
 
 function NewRoomForm(props) {
     const router = useRouter();
