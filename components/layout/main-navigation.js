@@ -20,9 +20,11 @@ function MainNavigation() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [anchorEl2, setAnchorEl2] = useState(null);
   const [anchorEl3, setAnchorEl3] = useState(null);
+  const [anchorEl4, setAnchorEl4] = useState(null);
   const open = Boolean(anchorEl);
   const open2 = Boolean(anchorEl2);
   const open3 = Boolean(anchorEl3);
+  const open4 = Boolean(anchorEl4);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -32,11 +34,15 @@ function MainNavigation() {
   };
   const handleClick3 = (event) => {
     setAnchorEl3(event.currentTarget);
-  }
+  };
+  const handleClick4 = (event) => {
+    setAnchorEl4(event.currentTarget);
+  };
   const handleClose = () => {
     setAnchorEl(null);
     setAnchorEl2(null);
     setAnchorEl3(null);
+    setAnchorEl4(null);
   };
 
   return (
@@ -48,6 +54,29 @@ function MainNavigation() {
       </Link>
       <nav>
         <ul>
+          <div>
+            <Button 
+              id="catalog-button"
+              aria-controls={open4 ? 'catalog-menu' : undefined}
+              aria-haspopup='true'
+              aria-expanded={open4 ? 'true' : undefined}
+              onClick={handleClick4}
+            >
+              Catalog
+            </Button>
+            <Menu
+              id="catalog-menu"
+              anchorEl={anchorEl4}
+              open={open4}
+              onClose={handleClose}
+              MenuListProps={{
+                'aria-labelledby': 'catalog-button',
+              }}
+            >
+              <MenuItem onClick={handleClose}><Link href='/products'>Product Catalog</Link></MenuItem>
+              <MenuItem onClick={handleClose}><Link href='/products/new'>New Product</Link></MenuItem>
+            </Menu>
+          </div>
           <div>
             <Button 
               id="production-button"
@@ -117,7 +146,7 @@ function MainNavigation() {
               <MenuItem onClick={handleClose}><Link href='/backorders'>Backorders</Link></MenuItem>
             </Menu>
           </div>
-                 </ul>
+        </ul>
       </nav>
     </header>
   );

@@ -1,14 +1,23 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 
 import classes from './OrderHeader.module.css';
 import OrderLines from './OrderLines';
 
 function OrderHeader(props) {
+    const [isLoading, setIsLoading] = useState(true);
+    const [headerDetails, setHeaderDetails] = useState({});
+
     const order = props.order;
+
+    console.log(order);
 
     const sortedLines = order.lines.sort(function (a,b) {
         return a.lineNum - b.lineNum
     });
+
+    const fetchDetails = async() => {
+        const doorStyle = await 
+    }
 
     return (
         <Fragment>
@@ -29,15 +38,15 @@ function OrderHeader(props) {
                 </div>
                 <div className={classes.headerLine}>
                     <div className={classes.headerLabel}>Drawer Front</div>
-                    <div className={classes.headerItem}>{order.drawerFront}</div>
+                    <div className={classes.headerItem}>{order.drawerType}</div>
                 </div>
                 <div className={classes.headerLine}>
                     <div className={classes.headerLabel}>Hinge</div>
-                    <div className={classes.headerItem}>{order.hinge}</div>
+                    <div className={classes.headerItem}>{order.hinging}</div>
                 </div>
                 <div className={classes.headerLine}>
                     <div className={classes.headerLabel}>Guide</div>
-                    <div className={classes.headerItem}>{order.guide}</div>
+                    <div className={classes.headerItem}>{order.guides}</div>
                 </div>
                 <div className={classes.headerLine}>
                     <div className={classes.headerLabel}>Material</div>
@@ -64,7 +73,7 @@ function OrderHeader(props) {
             <ul className={classes.orderLines}>
                 {sortedLines.map((line) => (
                     <li>
-                        <OrderLines line={line} />
+                        <OrderLines key={line._id} line={line} />
                     </li>
                 ))}
             </ul>

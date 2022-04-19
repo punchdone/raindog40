@@ -261,7 +261,7 @@ function NewSummitForm() {
             comment: comment,
             raindogLineItemId: ld.line_item_id
           };
-          const newLine = await axios('/api/projects/orders/' + newOrderId + '/lines', lineNutt);
+          const newLine = await axios.post('/api/projects/orders/' + newOrderId + '/lines', lineNutt);
           // console.log(newLine);
 
           // router.push('/projects');

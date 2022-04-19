@@ -1,0 +1,24 @@
+.dimensions {
+    display: flex;
+    flex-flow: row-wrap;
+    align-items: center;
+    padding: 0 1.5rem;
+    width: 100%
+}
+
+.dimensions input {
+    margin: .5rem;
+    width: 20%;
+}
+
+.dimensions select {
+    width: 10%;
+}
+
+.dimensions input:nth-child(6) {
+    width: 10%;
+}
+
+.dimensionForm {
+    margin: 0;
+}
