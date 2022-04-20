@@ -8,8 +8,42 @@
 
 .list div:nth-of-type(1){
     width: 10rem;
+    align-items: center;
+    padding: 0 1.5rem;
 }
 
 .list div:nth-of-type(2){
     width: 10rem;
+    text-align: left;
 }
+
+.list div:nth-of-type(3){
+    width: 10rem;
+    text-align: left;
+}
+
+.list div:nth-of-type(4){
+    width: 20rem;
+}
+
+.actions {
+    margin-top: 1rem;
+    text-align: right;
+  }
+  
+  .actions button {
+    font: inherit;
+    cursor: pointer;
+    background-color: #0077593b;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid #00775969;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  .actions button:hover,
+  .actions button:active {
+    background-color: #058856;
+    border-color: #0e93a56e;
+  }

@@ -37,6 +37,17 @@ const countSchema = new Schema({
     faces: Number
 });
 
+const imageSchema = new Schema({
+    url: {
+        type: String
+    },
+    public_id: {
+        type: String
+    }
+}, {
+    timestamps: true
+});
+
 const productSchema = new Schema({
     category: {
         type: Schema.Types.ObjectId,
@@ -56,6 +67,11 @@ const productSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'taxonomy'
     },
+    images: [
+        {
+            type: imageSchema
+        }
+    ],
     dimensions: [
         {
             type: dimensionSchema

@@ -4,13 +4,11 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import { useRouter } from 'next/router';
 
 import Card from '../ui/Card';
-import classes from './NewProductForm.module.css';
-import PricingForm from './pricing/PricingForm';
-import DimensionTable from './dimensions/DimensionTable';
-import CountForm from './counts/CountForm';
+import classes from './EditProductForm.module.css';
 import Spinner from '../layout/spinner';
+import Gallery from './images/gallery';
 
-function NewProductForm() {
+function EditProductForm(props) {
     const router = useRouter();
 
     const [isLoading, setIsLoading] = useState(true);
@@ -35,20 +33,9 @@ function NewProductForm() {
     const subtypeInputRef = useRef();
     const noteInputRef = useRef();
 
-    useEffect(() =>{
+    useEffect(() => {
         fetchHandler();
     }, []);
-
-    function imageChangeHandler(e) {
-        const reader = new FileReader();
-
-        reader.onload = function(onLoadEvent) {
-            setImageSource(onLoadEvent.target.result);
-            setUploadData(undefined);
-        }
-
-        reader.readAsDataURL(e.target.files[0]);
-    };
 
     async function fetchHandler() {
         const types = await axios.get('/api/products/taxonomy');
@@ -57,6 +44,14 @@ function NewProductForm() {
         setTypes(filteredTypes);
         const productLineTypes = types.data.filter(type => type.area === 'ProductLine');
         setProductLines(productLineTypes);
+        if (props.product.category === '6257143de97f4957f084d47b') {
+            setSubtypes(types.data.filter(type => type.area === 'MillType'));
+        } else if (props.product.category === '62571446e97f4957f084d47d' || props.product.category === '62571453e97f4957f084d47f') {
+            setShowSubtypes(false);
+            return
+        } else {
+            setSubtypes(types.data.filter(type => type.area === 'CaseType'));
+        };
         setIsLoading(false);
     };
 
@@ -88,126 +83,80 @@ function NewProductForm() {
     );
 
     function pricingClick() {
-       setShowPricing(!showPricing);
-    };
+        setShowPricing(!showPricing);
+     };
+ 
+     function pricingHandler(pricing) {
+         console.log(pricing);
+         setPricing((prevState) => {
+             return { ...prevState, pricing }
+         });
+     };
+ 
+     function dimensionClick() {
+         setShowDimensions(!showDimensions);
+     };
+ 
+     function dimensionHandler(dimension) {
+         setDimensions([...dimensions, dimension]);
+     };
+ 
+     function countClick() {
+         setShowCounts(!showCounts);
+     };
+ 
+     function countHandler(count) {
+         setCounts((prevState) => {
+             return { ...prevState, count }
+         });
+     };
 
-    function pricingHandler(pricing) {
-        console.log(pricing);
-        setPricing((prevState) => {
-            return { ...prevState, pricing }
-        });
-    };
-
-    function dimensionClick() {
-        setShowDimensions(!showDimensions);
-    };
-
-    function dimensionHandler(dimension) {
-        setDimensions([...dimensions, dimension]);
-    };
-
-    function countClick() {
-        setShowCounts(!showCounts);
-    };
-
-    function countHandler(count) {
-        setCounts((prevState) => {
-            return { ...prevState, count }
-        });
-    };
-
-    async function submitHandler(e) {
+     function submitHandler(e) {
         e.preventDefault();
-        setIsLoading(true);
+     }
 
-        const enteredProductLine = productLineInputRef.current.value;
-        const enteredConfigCode = configCodeInputRef.current.value;
-        const enteredTitle = titleInputRef.current.value;
-        const enteredType = typeInputRef.current.value;
-        const enteredSubtype = subtypeInputRef.current.value;
-        const enteredPrice = pricing.pricing;
-        const enteredCounts = counts.count;
-        const enteredDimensions = dimensions;
+     function imageChangeHandler(e) {
 
-        const form = e.currentTarget;
-        const fileInput = Array.from(form.elements).find(({ name }) => name === 'images');
 
-        const formData = new FormData();
+        console.log(e.currentTarget);
 
-        for ( const file of fileInput.files) {
-            formData.append('file', file);
-        };
+         const reader = new FileReader();
 
-        formData.append('upload_preset', 'my-uploads');
+         reader.onload = function(onLoadEvent) {
+             setImageSource(onLoadEvent.target.result);
+             setUploadData(undefined)
+         }
 
-        const data = await fetch('https://api.cloudinary.com/v1_1/punchdone/image/upload', {
-            method: 'POST',
-            body: formData
-        }).then(r => r.json());
+         reader.readAsDataURL(e.target.files[0]);
 
-        setImageSource(data.secure_url);
-        setUploadData(data);
-
-        const enteredImage = [
-            { 'public_id': data.public_id, 'url': data.secure_url }
-        ];
-
-        console.log(enteredImage);
-
-        let productData = {
-            productLine: enteredProductLine,
-            configCode: enteredConfigCode,
-            title: enteredTitle,
-            category: enteredType,
-            subCategory: enteredSubtype,
-            pricing: enteredPrice,
-            counts: enteredCounts,
-            dimensions: enteredDimensions,
-            images: enteredImage
-        };
-
-        console.log(productData);
-
-        const newProduct = await axios.post('/api/products', productData);
-
-        console.log(newProduct);
-        setIsLoading(false);
-
-        router.push('/products');
-    };
-
-    function productLineHandler(e) {
-        e.preventDefault();
-        console.log(e.target.value);
-        console.log(productLineInputRef.current.value);
-    }
+         console.log(reader);
+     }
 
     return (
-       
         <Card>
-             {isLoading && <div className={classes.spinner}><Spinner /></div> || 
+            {isLoading && <div className={classes.spinner}><Spinner /></div> || 
             <form className={classes.form} onSubmit={submitHandler}>
                 <div className={classes.control}>
                     <label htmlFor="productLine">Product Line</label>
-                    <select name='productLine' required ref={productLineInputRef} onChange={productLineHandler}>
+                    <select name='productLine' required ref={productLineInputRef} value={props.product.productLine}>
                         {productLineOptions}
                     </select>
                     <label htmlFor="type">Cabinet Type</label>
-                    <select name='type' required ref={typeInputRef} onChange={subtypeHandler}>
+                    <select name='type' required ref={typeInputRef} onChange={subtypeHandler} value={props.product.category}>
                         {typeOptions}
                     </select>
                     {showSubtypes && 
                     <div>
                         <label htmlFor="subtype">Sub Type</label>
-                        <select ref={subtypeInputRef}>
+                        <select ref={subtypeInputRef} value={props.product.subCategory}>
                             {subtypeOptions}
                         </select>
                     </div>
                     }
                     <label htmlFor="configCode">Configuration Code</label>
-                    <input type='text' required id='configCode' ref={configCodeInputRef} />
+                    <input type='text' required id='configCode' ref={configCodeInputRef} value={props.product.configCode}/>
                     <label htmlFor="title">Title</label>
-                    <input type='text' required id='title' ref={titleInputRef} />
+                    <input type='text' required id='title' ref={titleInputRef} value={props.product.title}/>
                     <label onClick={pricingClick}>Pricing <AiOutlinePlus /></label>
                     {showPricing && <PricingForm loadPricing={pricingHandler} />}
                     <label onClick={dimensionClick}>Dimensions <AiOutlinePlus /></label>
@@ -217,18 +166,21 @@ function NewProductForm() {
                 </div>
                 <div className={classes.control}>
                     <label htmlFor='note'>Note</label>
-                    <textarea id='note' ref={noteInputRef} />
+                    <textarea id='note' ref={noteInputRef} value={props.product.notes}/>
                 </div>
                 <div className={classes.control}>
                     <label htmlFor='files'>Images</label>
+                    <Gallery images={props.product.images} />
                     <input type='file' accept='.jpg, .png, .pdf, .jpeg' name='images' onChange={imageChangeHandler} />
+                    <img src={imageSource} />
                 </div>
                 <div className={classes.actions}>
-                    <button type='submit'>Add Product</button>
+                    <button type='submit'>Add Edited Product</button>
                 </div>
             </form>}
         </Card>
+        
     )
 };
 
-export default NewProductForm;
+export default EditProductForm;

@@ -15,9 +15,9 @@ function OrderHeader(props) {
         return a.lineNum - b.lineNum
     });
 
-    const fetchDetails = async() => {
-        const doorStyle = await 
-    }
+    // const fetchDetails = async() => {
+    //     const doorStyle = await 
+    // }
 
     return (
         <Fragment>
