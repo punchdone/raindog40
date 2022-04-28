@@ -1,8 +1,8 @@
-import ProductList from '../../components/products/ProductList';
+import MainPage from '../../components/products/catalog/MainPage';
 
-function ProductCatalog(props) {
+function Catalog(props) {
     return (
-        <ProductList products={props.products} />
+        <MainPage products={props.products} />
     )
 };
 
@@ -16,4 +16,4 @@ export async function getStaticProps() {
     }
 };
 
-export default ProductCatalog;
+export default Catalog;

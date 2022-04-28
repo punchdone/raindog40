@@ -7,12 +7,13 @@ function ProductList(props) {
   const productList = products.map((product) => (
     <ProductItem 
         key={product._id}
-        productId={product._id}
-        configCode={product.configCode}
-        category={product.category.title}
-        subCategory={product.subCategory.title}
-        title={product.title}
-        images={product.images}
+        product={product}
+        // productId={product._id}
+        // configCode={product.configCode}
+        // // category={product.category.title}
+        // // subCategory={product.subCategory.title}
+        // title={product.title}
+        // images={product.images}
     />
   ));
 
@@ -20,6 +21,7 @@ function ProductList(props) {
     <div className={classes.listBlock}>
       <div className={classes.header}>
         <label>Image</label>
+        <label>Product Line</label>
         <label>Category</label>
         <label>Config Code</label>
         <label>Title</label>

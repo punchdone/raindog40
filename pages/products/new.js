@@ -1,4 +1,4 @@
-import NewProductForm from '../../components/catalog/NewProductForm';
+import NewProductForm from '../../components/products/NewProductForm';
 
 function NewProductPage() {
     return (

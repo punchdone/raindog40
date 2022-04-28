@@ -1,4 +1,4 @@
-import EditProductForm from '../../components/catalog/EditProductForm';
+import EditProductForm from '../../components/products/EditProductForm';
 
 function EditProductPage(props) {
     return (
@@ -8,7 +8,7 @@ function EditProductPage(props) {
 
 export async function getServerSideProps({ params }) {
     const res = await fetch(`http://localhost:3000/api/products/${params.productId}`)
-    console.log(res);
+    // console.log(res);
     const product = await res.json();
     return {
         props: {

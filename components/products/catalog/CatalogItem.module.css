@@ -1,0 +1,8 @@
+.item {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 0.5rem;
+    border: 3px;
+    max-width: 22.5%;
+}

@@ -1,4 +1,25 @@
-import middleware from '../../../middleware/middleware';
+// import connectDB from '../../../connectDB';
+// import Product from '../../../models/Product/product';
+// import { ObjectId } from 'mongodb';
+
+// connectDB();
+
+// export default async function handler(req, res) {
+//     const productId = req.query.productId;
+//     console.log(productId);
+//     if (req.method === 'POST') {
+//         const data = req.body;
+//         console.log(data);
+//         const product = await Product.updateOne({ _id: ObjectId(productId) },
+//             { $addToSet: { images: data } }
+//         );
+//         res.status(201).json(product);
+//     } else {
+
+//     }
+// };
+
+import middleware from '../../../../middleware/middleware';
 import nextConnect from 'next-connect';
 import cloudinary from 'cloudinary';
 
@@ -20,8 +41,8 @@ const handler = nextConnect();
 handler.use(middleware);
 
 handler.post(async (req, res) => {
-    // console.log(req.body);
-    // console.log(req.files);
+    console.log(req.body);
+    console.log(req.files);
     try {
         if (!req.files) {
             throw new Error('Image is not presented!');

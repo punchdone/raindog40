@@ -1,16 +1,11 @@
 .form {
-    padding: 1rem;
+    padding: 1rem 1rem 0 1rem;
     display: inline-block;
     text-align: left;
     width: 70%;
     margin-left: 15%;
     margin-right: 15%;
   }
-  
-  /* .orderCheckbox {
-    float: left;
-    background-color: #058856;
-  } */
 
   .control {
     margin-bottom: 0.5rem;
@@ -34,8 +29,11 @@
   }
   
   .actions {
-    margin-top: 1rem;
-    text-align: right;
+    text-align: left;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding: 0 1rem;
   }
   
   .actions button {
@@ -55,10 +53,6 @@
     border-color: #0e93a56e;
   }
 
-.input #shiped {
-      text-align: left;
-  }
-
   .spinner {
     display: block;
     position: fixed;
@@ -69,4 +63,12 @@
     margin-right: -..px; /* half of the elements widht */
   }
 
-  
+  .variation {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .varList {
+    width: 80%;
+    margin: 0 auto 1rem auto;
+  }

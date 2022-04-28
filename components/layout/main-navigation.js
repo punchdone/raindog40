@@ -73,7 +73,8 @@ function MainNavigation() {
                 'aria-labelledby': 'catalog-button',
               }}
             >
-              <MenuItem onClick={handleClose}><Link href='/products'>Product Catalog</Link></MenuItem>
+              <MenuItem onClick={handleClose}><Link href='/products'>Product Listing</Link></MenuItem>
+              <MenuItem onClick={handleClose}><Link href='/products/catalog'>Product Catalog</Link></MenuItem>
               <MenuItem onClick={handleClose}><Link href='/products/new'>New Product</Link></MenuItem>
             </Menu>
           </div>
