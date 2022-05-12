@@ -3,7 +3,6 @@ const { Schema } = mongoose;
 mongoose.Promise = global.Promise;
 
 const rateSchema = new Schema({
-    costElement: String,
     uom: String,
     rate: Number
 });

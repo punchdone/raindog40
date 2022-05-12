@@ -1,5 +1,5 @@
-import connectDB from '../../../../connectDB';
-import Taxonomy from '../../../../models/Product/taxonomy';
+import connectDB from '../../../connectDB';
+import Taxonomy from '../../../models/Product/taxonomy';
 
 connectDB();
 

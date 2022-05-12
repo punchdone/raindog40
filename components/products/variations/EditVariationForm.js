@@ -29,16 +29,18 @@ function EditVariationForm(props) {
     const subtypeInputRef = useRef();
     const noteInputRef = useRef();
 
+    console.log(dimensions);
+
     useEffect(() =>{
         fetchHandler();
     }, []);
 
     async function fetchHandler() {
-        const types = await axios.get('/api/products/taxonomy');
-        if (props.product.category === '6257143de97f4957f084d47b') {
+        const types = await axios.get('/api/taxonomy');
+        if (props.product.category._id === '6257143de97f4957f084d47b') {
             setSubtypes(types.data.filter(type => type.area === 'MillType'));
             setShowSubtypes(true);
-        } else if (props.product.category === '62571446e97f4957f084d47d' || props.product.category === '62571453e97f4957f084d47f') {
+        } else if (props.product.category._id === '62571446e97f4957f084d47d' || props.product.category._id === '62571453e97f4957f084d47f') {
             setShowSubtypes(false);
             return
         } else {
@@ -84,6 +86,10 @@ function EditVariationForm(props) {
  
      function dimensionHandler(dimension) {
          setDimensions([...dimensions, dimension]);
+     };
+
+     function deleteDimensionHandler(direction) {
+         setDimensions(dimensions.filter(dimension => dimension.direction !== direction));
      };
  
      function countClick() {
@@ -135,7 +141,7 @@ function EditVariationForm(props) {
                     <label onClick={pricingClick}>Pricing <AiOutlinePlus /></label>
                     {showPricing && <PricingForm loadPricing={pricingHandler} />}
                     <label onClick={dimensionClick}>Dimensions <AiOutlinePlus /></label>
-                    {showDimensions && <DimensionTable loadDimension={dimensionHandler} dimensions={dimensions} />}
+                    {showDimensions && <DimensionTable loadDimension={dimensionHandler} deleteDimension={deleteDimensionHandler} dimensions={dimensions} />}
                     <label onClick={countClick}>Product Counts <AiOutlinePlus /></label>
                     {showCounts && <CountForm loadCounts={countHandler} />}
                     <label htmlFor='note'>Note</label>

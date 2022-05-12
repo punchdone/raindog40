@@ -16,7 +16,7 @@ function NewVariationForm(props) {
 
     // console.log(props.product.category);
 
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [allTypes, setAllTypes] = useState([]);
     // const [productLines, setProductLines] = useState([]);
     // const [types, setTypes] = useState([]);
@@ -37,9 +37,9 @@ function NewVariationForm(props) {
     const subtypeInputRef = useRef();
     const noteInputRef = useRef();
 
-    useEffect(() =>{
-        fetchHandler();
-    }, []);
+    // useEffect(() =>{
+    //     fetchHandler();
+    // }, []);
 
     function imageChangeHandler(e) {
         const reader = new FileReader();
@@ -52,27 +52,27 @@ function NewVariationForm(props) {
         reader.readAsDataURL(e.target.files[0]);
     };
 
-    async function fetchHandler() {
-        const types = await axios.get('/api/products/taxonomy');
+    // async function fetchHandler() {
+    //     const types = await axios.get('/api/taxonomy');
         // setAllTypes(types.data);
         // const filteredTypes = types.data.filter(type => type.area === 'CabType');
         // setTypes(filteredTypes);
         // const productLineTypes = types.data.filter(type => type.area === 'ProductLine');
         // setProductLines(productLineTypes);
 
-        if (props.product.category === '6257143de97f4957f084d47b') {
-            setSubtypes(types.data.filter(type => type.area === 'MillType'));
-            setShowSubtypes(true);
-        } else if (props.product.category === '62571446e97f4957f084d47d' || props.product.category === '62571453e97f4957f084d47f') {
-            setShowSubtypes(false);
-            return
-        } else {
-            setSubtypes(types.data.filter(type => type.area === 'CaseType'));
-            setShowSubtypes(true);
-        };
+    //     if (props.product.category === '6257143de97f4957f084d47b') {
+    //         setSubtypes(types.data.filter(type => type.area === 'MillType'));
+    //         setShowSubtypes(true);
+    //     } else if (props.product.category === '62571446e97f4957f084d47d' || props.product.category === '62571453e97f4957f084d47f') {
+    //         setShowSubtypes(false);
+    //         return
+    //     } else {
+    //         setSubtypes(types.data.filter(type => type.area === 'CaseType'));
+    //         setShowSubtypes(true);
+    //     };
 
-        setIsLoading(false);
-    };
+    //     setIsLoading(false);
+    // };
 
     // const typeOptions = types.map(type => 
     //     <option key={type._id} value={type._id}>{type.title}</option>
@@ -97,7 +97,7 @@ function NewVariationForm(props) {
     //     };
     // };
 
-    const subtypeOptions = subtypes.map(subtype => 
+    const subtypeOptions = props.subtypes.map(subtype => 
         <option key={subtype._id} value={subtype._id}>{subtype.title}</option>
     );
 

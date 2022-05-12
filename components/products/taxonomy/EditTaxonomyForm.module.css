@@ -1,0 +1,22 @@
+.areaSelection {
+    width: 10rem;
+    /* margin-right: 10px; */
+    /* padding-right: 2rem; */
+    /* background-color: red; */
+    height: 5rem;
+}
+
+.element {
+    margin-left: 1rem;
+}
+
+.taxonomy button {
+    margin: 2rem 0 0 1rem;
+    height: 2rem;
+    position: relative;
+    top: 50%;
+}
+
+.rates {
+    margin: 1rem 0;
+}

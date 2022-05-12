@@ -5,7 +5,8 @@ export async function rwTaxonomyLookup(tid) {
     return termDetail.data.name;
 }
 
-export async function taxonomyLookup(directionCode) {
-    const taxonomyDetail = await axios('http://localhost:3000/api/products/taxonomy/' + directionCode);
+export async function taxonomyLookup(taxId) {
+    const taxonomyDetail = await axios('/api/taxonomy/' + taxId);
+    console.log(taxonomyDetail);
     return taxonomyDetail.data.title;
 };

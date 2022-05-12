@@ -21,6 +21,8 @@ function CountForm(props) {
                 <input type='number' id='topDrawer' onChange={countUpdate} />
                 <label htmlFor="lowerDrawer">Lower Drawer</label>
                 <input type='number' id='lowerDrawer' onChange={countUpdate} />
+                <label htmlFor="falseFront">False Front</label>
+                <input type='number' id='falseFront' onChange={countUpdate} />
                 <label htmlFor="door">Door</label>
                 <input type='number' id='door' onChange={countUpdate} />
                 <label htmlFor="shelf">Shelf</label>

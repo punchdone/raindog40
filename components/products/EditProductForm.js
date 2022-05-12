@@ -20,7 +20,7 @@ function EditProductForm(props) {
   const [productLines, setProductLines] = useState([]);
   const [types, setTypes] = useState([]);
   const [subtypes, setSubtypes] = useState([]);
-  const [showSubtypes, setShowSubtypes] = useState(true);
+  // const [showSubtypes, setShowSubtypes] = useState(true);
   const [showPricing, setShowPricing] = useState(false);
   const [pricing, setPricing] = useState({});
   const [showDimensions, setShowDimensions] = useState(false);
@@ -43,12 +43,16 @@ function EditProductForm(props) {
   // const subtypeInputRef = useRef();
   // const noteInputRef = useRef();
 
+  
+  console.log(props.product.category);
+  console.log(subtypes);
+
   useEffect(() => {
     fetchHandler();
   }, []);
 
   async function fetchHandler() {
-    const types = await axios.get("/api/products/taxonomy");
+    const types = await axios.get("/api/taxonomy");
     setAllTypes(types.data);
     const filteredTypes = types.data.filter((type) => type.area === "CabType");
     setTypes(filteredTypes);
@@ -56,11 +60,11 @@ function EditProductForm(props) {
       (type) => type.area === "ProductLine"
     );
     setProductLines(productLineTypes);
-    if (props.product.category === "6257143de97f4957f084d47b") {
+    if (props.product.category._id === "6257143de97f4957f084d47b") {
       setSubtypes(types.data.filter((type) => type.area === "MillType"));
     } else if (
-      props.product.category === "62571446e97f4957f084d47d" ||
-      props.product.category === "62571453e97f4957f084d47f"
+      props.product.category._id === "62571446e97f4957f084d47d" ||
+      props.product.category._id === "62571453e97f4957f084d47f"
     ) {
       setShowSubtypes(false);
       return;
@@ -82,23 +86,23 @@ function EditProductForm(props) {
     </option>
   ));
 
-  // async function subtypeHandler(e) {
-  //   e.preventDefault();
-  //   // console.log(e.target.value);
-  //   if (e.target.value === "6257143de97f4957f084d47b") {
-  //     setSubtypes(allTypes.filter((type) => type.area === "MillType"));
-  //     setShowSubtypes(true);
-  //   } else if (
-  //     e.target.value === "62571446e97f4957f084d47d" ||
-  //     e.target.value === "62571453e97f4957f084d47f"
-  //   ) {
-  //     setShowSubtypes(false);
-  //     return;
-  //   } else {
-  //     setSubtypes(allTypes.filter((type) => type.area === "CaseType"));
-  //     setShowSubtypes(true);
-  //   }
-  // }
+  async function categoryHandler(e) {
+    e.preventDefault();
+    // console.log(e.target.value);
+    if (e.target.value === "6257143de97f4957f084d47b") {
+      setSubtypes(allTypes.filter((type) => type.area === "MillType"));
+      // setShowSubtypes(true);
+    } else if (
+      e.target.value === "62571446e97f4957f084d47d" ||
+      e.target.value === "62571453e97f4957f084d47f"
+    ) {
+      // setShowSubtypes(false);
+      return;
+    } else {
+      setSubtypes(allTypes.filter((type) => type.area === "CaseType"));
+      // setShowSubtypes(true);
+    }
+  }
 
   // const subtypeOptions = subtypes.map((subtype) => (
   //   <option key={subtype._id} value={subtype._id}>
@@ -283,7 +287,7 @@ function catalogClick(e) {
               name="type"
               required
               ref={typeInputRef}
-              // onChange={subtypeHandler}
+              onChange={categoryHandler}
               defaultValue={props.product.category._id}
             >
               {typeOptions}
@@ -344,7 +348,7 @@ function catalogClick(e) {
             </div>
           </Card>
           <div className={classes.variation}>
-                {showVariation && <NewVariationForm product={props.product} addVariation={addVariationHandler} />}
+                {showVariation && <NewVariationForm product={props.product} addVariation={addVariationHandler} subtypes={subtypes} />}
             </div>
           <div className={classes.actions}>
             <button onClick={variationClick}>Add Variation</button>

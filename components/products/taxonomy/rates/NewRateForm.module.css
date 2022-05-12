@@ -1,0 +1,16 @@
+.areaSelection {
+    width: 10rem;
+    margin: 0 0 0 1rem;
+}
+
+.rateForm {
+    margin: 1rem 0 0 0;
+}
+
+
+.rateForm button {
+    margin: 1rem 0 0 1rem;
+    height: 2rem;
+    position: relative;
+    top: 50%;
+}

@@ -1,4 +1,6 @@
 import { useState, Fragment } from 'react';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 import CatalogItem from "./CatalogItem";
 import classes from "./MainPage.module.css";
@@ -25,13 +27,13 @@ function MainPage(props) {
   };
 
   function filterProducts(productLine, category) {
-    console.log(productLine);
-    console.log(category);
+    // console.log(productLine);
+    // console.log(category);
     setProducts(props.products);
-    console.log(products);
-    console.log(products.length);
-    console.log(props.products);
-    console.log(props.products.length);
+    // console.log(products);
+    // console.log(products.length);
+    // console.log(props.products);
+    // console.log(props.products.length);
 
     if (productLine === 'none') {
       // return;
@@ -56,16 +58,20 @@ function MainPage(props) {
     <Fragment>
     {modalIsShown && <VariationsModal onClose={hideVariationsHandler} variations={variations} product={product}/>}
     <CatalogFilter filter={filterProducts} reset={filterReset} />
-    <div className={classes.catalog}>
+    <Box sx={{ flexGrow: 1 }}>
+    <Grid container spacing={2}>
       {products.map((product) => (
-        <CatalogItem 
-            key={product._id} 
-            product={product}
-            action={variationsHandler}
-            actionTitle='Variations'
-        />
+        <Grid item xs={6} sm={4} md={2} lg={1}>
+          <CatalogItem 
+              key={product._id} 
+              product={product}
+              action={variationsHandler}
+              actionTitle='Variations'
+          />
+        </Grid>
       ))}
-    </div>
+    </Grid>
+    </Box>
     </Fragment>
   );
 }

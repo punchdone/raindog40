@@ -6,10 +6,10 @@ connectDB();
 
 export default async function handler(req, res) {
     const productId = req.query;
-    console.log(productId);
+    // console.log(productId);
     if (req.method === 'PUT') {
         const data = req.body;
-        console.log(data);
+        // console.log(data);
         const product = await Product.updateOne({ _id: ObjectId(productId.productId) }, data);
         return res.status(202).json(product);
     } else {

@@ -1,4 +1,8 @@
-.dimensions {
+.dimension input {
+    width: 100%;
+}
+
+/* .dimensions {
     display: flex;
     flex-flow: row-wrap;
     align-items: center;
@@ -13,7 +17,7 @@
 
 .dimensions select {
     width: 10%;
-}
+} */
 
 .dimensions input:nth-child(6) {
     width: 10%;

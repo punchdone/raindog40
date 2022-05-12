@@ -7,6 +7,7 @@ import Link from 'next/link';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+// import NestedMenuItem from "material-ui-nested-menu-item";
 
 import classes from './main-navigation.module.css';
 
@@ -76,6 +77,9 @@ function MainNavigation() {
               <MenuItem onClick={handleClose}><Link href='/products'>Product Listing</Link></MenuItem>
               <MenuItem onClick={handleClose}><Link href='/products/catalog'>Product Catalog</Link></MenuItem>
               <MenuItem onClick={handleClose}><Link href='/products/new'>New Product</Link></MenuItem>
+              <MenuItem onClick={handleClose}><Link href='/products/taxonomy'>Taxonomy</Link></MenuItem>
+              <MenuItem onClick={handleClose}><Link href='/products/finishes'>Finishes</Link></MenuItem>
+              <MenuItem onClick={handleClose}><Link href='/products/doors'>Doors</Link></MenuItem>
             </Menu>
           </div>
           <div>
@@ -98,6 +102,14 @@ function MainNavigation() {
               }}
             >
               <MenuItem onClick={handleClose}><Link href='/projects'>Production List</Link></MenuItem>
+              {/* <NestedMenuItem
+                label='Order Processing'
+                open={open3}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}><Link href='/projects/newWB'>New WB/DB Project</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link href='/projects/newSummit'>New Summit Project</Link></MenuItem>
+              </NestedMenuItem> */}
             </Menu>
           </div>
           <div>

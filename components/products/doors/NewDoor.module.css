@@ -1,0 +1,38 @@
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.form form {
+    width: 100%;
+    margin: 0;
+    /* display: flex;
+    flex-direction: row; */
+}
+
+.header {
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+}
+
+.form .leftside {
+    width: 50%;
+}
+
+.leftside input {
+    width: 90%;
+}
+
+.form .rightside {
+    width: 50%;
+}
+
+.input {
+    margin: 0.5rem 0;
+}
+
+.bottom button {
+    margin-right: 0.5rem;
+}

@@ -38,6 +38,7 @@ function CatalogItem(props) {
     <Card 
         sx={{ minWidth: 175 }} 
         className={classes.item}
+        elevation={3}
         // onMouseEnter={showVariationsHandler}
         // onMouseLeave={hideVariationsHandler}
     >
@@ -59,10 +60,10 @@ function CatalogItem(props) {
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {props.product.category.title}
         </Typography>
-        <Typography variant="h5" component="div">
+        <Typography variant="h6" component="div">
           {props.product.title}
         </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+        <Typography sx={{ mb: .75 }} color="text.secondary">
           {props.product.productLine.title}
         </Typography>
         <Typography variant="body2">

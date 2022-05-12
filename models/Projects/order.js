@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 mongoose.Promise = global.Promise;
 const line = require('./line');
+const taxonomy = require('../Product/taxonomy');
 
 const orderSchema = new Schema({
     woProjectNum: {
@@ -23,7 +24,8 @@ const orderSchema = new Schema({
         type: String
     },
     productLine: {
-        type: String
+        type: Schema.Types.ObjectId,
+        ref: 'taxonomy'
     },
     construction: {
         type: String

@@ -1,5 +1,6 @@
 import connectDB from '../../../connectDB';
 import Project from '../../../models/Projects/project';
+// import Order from '../../../models/Projects/order';
 
 connectDB();
 
@@ -11,7 +12,15 @@ export default async function handler(req, res) {
         res.status(201).json(project);
     } else {
         const projects = await Project.find()
-            .populate('rooms')
+            .populate({
+                path: 'rooms',
+                // populate: {
+                //     path: 'order', 
+                //     // populate: {
+                //     //     path: 'lines'
+                //     // }
+                // }
+            });
         return res.status(200).json(projects);
     }
 };

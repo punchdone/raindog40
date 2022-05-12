@@ -28,6 +28,7 @@ const pricingSchema = new Schema({
 const countSchema = new Schema({
     topDrawer: Number,
     lowerDrawer: Number,
+    falseFront: Number,
     door: Number,
     shelf: Number,
     partition: Number,

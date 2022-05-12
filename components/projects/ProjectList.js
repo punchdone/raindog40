@@ -1,50 +1,81 @@
-// import projectPad from '../../helpers/projectPad';
-// import channelCodeLookup from '../../helpers/channel';
-import Card from '../ui/Card';
-import classes from './ProjectList.module.css';
-import ProjectItem from './ProjectItem';
+import { useState, Fragment } from "react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  TablePagination,
+} from "@mui/material";
 
+import ProjectItem from "./ProjectItem";
+import Order from './orders/Order';
 
-function ProjectList(props) {
-    const projects = props.projects;
-    // console.log(projects);
-    // console.log(projects.length);
+function ProjectList({ projects }) {
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [modalIsShown, setModalIsShown] = useState(false);
 
-    // console.log(props.projects);
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
 
-    // console.log('array length = ' + props.project.length);
+  const handleChangeRowsPerPage = (e) => {
+    setRowsPerPage(e.target.value);
+    setPage(0);
+  };
 
-    // const projectList = 
-    //     // props.projects.length === 0 &&
-    //     // <div className={classes.list}>No projects (yet)</div>  ||
-    //     props.projects.map(async(project) => (
-    //         <div className={classes.list} key={project._id}>
-    //             <div>{project.projectName}</div>
-    //         </div>
-    //     ))
+  const orderClickHandler = (e) => {
+    console.log(e.target.id);
+    setModalIsShown(true);
+  };
 
-    const projectList = 
-        projects.map(project => (
-                <ProjectItem key={project._id} project={project} />
-            )
-        );
-
-    return (
-        <Card>
-             <div className={classes.listBlock}>
-                <div className={classes.header}>
-                    <label htmlFor='woProjectNum'>Project#</label>
-                    <label htmlFor='RoomNum'>Project Name</label>
-                    <label htmlFor='dealerCode'>Room Name</label>
-                    <label htmlFor='projectName'>Order Type</label>
-                    <label htmlFor='roomName'>Order Status</label>
-                    <label htmlFor='productLine'></label>
-                    <label htmlFor='order'>Order#</label>
-                </div>
-                {projectList}
-            </div>
-        </Card>
-    )
-};
+  return (
+    <Fragment>
+    {modalIsShown && <Order /> || (
+    <Paper sx={{ width: "100%", overflow: "hidden" }}>
+      <TableContainer sx={{ maxheight: 440 }}>
+        <Table sx={{ minWidth: 650 }} aria-label="production list" stickyheader>
+          <TableHead>
+            <TableRow>
+              <TableCell>Project #</TableCell>
+              <TableCell>Project Name</TableCell>
+              <TableCell>Room/Spec Group Name</TableCell>
+              <TableCell>Order Type</TableCell>
+              <TableCell>Order Status</TableCell>
+              <TableCell>Product Line</TableCell>
+              <TableCell>Order #</TableCell>
+              <TableCell></TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {projects.map((project) =>
+              project.rooms.map((room) => (
+                <ProjectItem
+                  project={project}
+                  room={room}
+                  orderClick={orderClickHandler}
+                />
+              ))
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[10, 25, 100]}
+        component="div"
+        count={projects.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
+    </Paper>
+    )}
+    </Fragment>
+  );
+}
 
 export default ProjectList;

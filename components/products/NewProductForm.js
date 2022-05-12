@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import classes from './NewProductForm.module.css';
 import NewVariationForm from './variations/NewVariationForm';
 import Spinner from '../layout/spinner';
-import VariationsList from './variations/VariationsList';
+// import VariationsList from './variations/VariationsList';
 import ImageElement from './images/ImageElement';
 
 function NewProductForm() {
@@ -21,7 +21,7 @@ function NewProductForm() {
 
     const productLineInputRef = useRef();
     const typeInputRef = useRef();
-    const configCodeInputRef = useRef();
+    // const configCodeInputRef = useRef();
     const titleInputRef = useRef();
 
     useEffect(() =>{
@@ -29,7 +29,8 @@ function NewProductForm() {
     }, []);
 
     async function fetchHandler() {
-        const types = await axios.get('/api/products/taxonomy');
+        const types = await axios.get('/api/taxonomy');
+        console.log(types);
         const filteredTypes = types.data.filter(type => type.area === 'CabType');
         setTypes(filteredTypes);
         const productLineTypes = types.data.filter(type => type.area === 'ProductLine');
