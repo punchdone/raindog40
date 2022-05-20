@@ -14,6 +14,12 @@ const taxonomySchema = new Schema({
     title: {
         type: String
     },
+    equivalentOE: {
+        type: String
+    },
+    equivalentRaindog: {
+        type: String
+    },
     rates: [
         { type: rateSchema }
     ]

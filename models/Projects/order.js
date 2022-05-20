@@ -3,6 +3,8 @@ const { Schema } = mongoose;
 mongoose.Promise = global.Promise;
 const line = require('./line');
 const taxonomy = require('../Product/taxonomy');
+const finish = require('../Product/finish');
+const door = require('../Product/door');
 
 const orderSchema = new Schema({
     woProjectNum: {
@@ -28,55 +30,40 @@ const orderSchema = new Schema({
         ref: 'taxonomy'
     },
     construction: {
-        type: String
+        type: Schema.Types.ObjectId,
+        ref: 'taxonomy'
     },
     material: {
-        type: String
+        type: Schema.Types.ObjectId,
+        ref: 'taxonomy'
     },
     interior: {
-        type: String
+        type: Schema.Types.ObjectId,
+        ref: 'taxonomy'
     },
     drawerType: {
-        type: String
+        type: Schema.Types.ObjectId,
+        ref: 'taxonomy'
     },
-    doorStyle: {
-        type: String
-    },
-    doorType: {
-        type: String
-    },
-    doorContruction: {
-        type: String
-    },
-    railSize: {
-        type: String
-    },
-    ieProfile: {
-        type: String
-    },
-    oeProfile: {
-        type: String
-    }, 
-    panelProfile: {
-        type: String
+    door: {
+        type: Schema.Types.ObjectId,
+        ref: 'door'
     },
     topDrawerType: {
-        type: String
+        type: Schema.Types.ObjectId,
+        ref: 'taxonomy'
     },
-    hinging: {
-        type: String
+    hinge: {
+        type: Schema.Types.ObjectId,
+        ref: 'taxonomy'
     },
     guides: {
-        type: String
-    },
-    material: {
-        type: String
+        type: Schema.Types.ObjectId,
+        ref: 'taxonomy'
     },
     finish: {
-        type: String
-    },
-    finishType: {
-        type: String
+        type: Schema.Types.ObjectId,
+        ref: 'finish'
     },
     lines: [
         {

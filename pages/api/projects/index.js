@@ -12,15 +12,9 @@ export default async function handler(req, res) {
         res.status(201).json(project);
     } else {
         const projects = await Project.find()
-            .populate({
-                path: 'rooms',
-                // populate: {
-                //     path: 'order', 
-                //     // populate: {
-                //     //     path: 'lines'
-                //     // }
-                // }
-            });
+            .populate('rooms')
+            .populate('deliveryGeography')
+            .populate('productLine');
         return res.status(200).json(projects);
     }
 };

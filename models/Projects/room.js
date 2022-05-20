@@ -2,21 +2,24 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 mongoose.Promise = global.Promise;
 const order = require('./order');
+const taxonomy = require('../Product/taxonomy')
 
 const roomSchema = new Schema({
     roomNum: {
-        type: String
+        type: Number
     },
     roomName: {
         type: String
     },
     orderType: {
-        type: Number
+        type: Schema.Types.ObjectId,
+        ref: 'taxonomy'
     },
-    status: {
-        type: Number
+    orderStatus: {
+        type: Schema.Types.ObjectId,
+        ref: 'taxonomy'
     },
-    order: {
+    orderId: {
         type: Schema.Types.ObjectId,
         ref: 'order'
     },

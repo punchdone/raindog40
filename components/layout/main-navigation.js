@@ -101,7 +101,7 @@ function MainNavigation() {
                 'aria-labelledby': 'production-button',
               }}
             >
-              <MenuItem onClick={handleClose}><Link href='/projects'>Production List</Link></MenuItem>
+              <MenuItem onClick={handleClose}><Link href='/projects/production'>Production List</Link></MenuItem>
               {/* <NestedMenuItem
                 label='Order Processing'
                 open={open3}
@@ -134,6 +134,7 @@ function MainNavigation() {
               <MenuItem onClick={handleClose}><Link href='/projects/newWB'>New WB/DB Project</Link></MenuItem>
               <MenuItem onClick={handleClose}><Link href='/projects/newSummit'>New Summit Project</Link></MenuItem>
               <MenuItem onClick={handleClose}><Link href='/projects/orders'>OrderDrop</Link></MenuItem>
+              <MenuItem onClick={handleClose}><Link href='/projects/orders/step'>Step by Step</Link></MenuItem>
             </Menu>
           </div>
           <div>

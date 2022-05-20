@@ -1,35 +1,44 @@
-import { useRef, Fragment, useState } from 'react';
+import { Fragment, useState } from 'react';
 import { useRouter } from 'next/router';
 import { parse } from 'papaparse';
 import axios from 'axios';
+import {
+  Grid,
+  FormControl,
+  Button,
+  FormHelperText,
+  TextField
+} from '@mui/material';
 
-import classes from './NewRoomForm.module.css';
 import DropZone from '../DropZone';
+import { translationOE, finishTranslationOE } from '../../../helpers/Lookups';
+import Pulldown from '../../../helpers/Pulldown';
 
 function NewRoomForm(props) {
     const router = useRouter();
 
     const [showDropZone, setShowDropZone] = useState(false);
-    const [customer, setCustomer] = useState([]);
+    const [header, setHeader] = useState([]);
     const [lines, setLines] = useState([]);
     const [room, setRoom] = useState({
         number: null,
-        name: '',
-        type: 1,
-        total: null
+        roomName: '',
+        orderType: '',
+        orderTotal: null,
+        orderId: 0
     });
 
-    const roomNameInputRef = useRef();
-    const orderTypeInputRef = useRef();
-    const totalPriceInputRef = useRef();
+    // const roomNameInputRef = useRef();
+    // const orderTypeInputRef = useRef();
+    // const totalPriceInputRef = useRef();
 
-    const orderTypeOptions = (
-        <select ref={orderTypeInputRef} defaultValue='1'>
-            <option key='1' value='1'>Master</option>
-            <option key='2' value='2'>ADD/JCO</option>
-            <option key='3' value='3'>Blue/Warranty</option>
-        </select>
-    );
+    // const orderTypeOptions = (
+    //     <select ref={orderTypeInputRef} defaultValue='1'>
+    //         <option key='1' value='1'>Master</option>
+    //         <option key='2' value='2'>ADD/JCO</option>
+    //         <option key='3' value='3'>Blue/Warranty</option>
+    //     </select>
+    // );
 
     const dropFileHandler = (e) => {
         e.preventDefault();
@@ -78,17 +87,22 @@ function NewRoomForm(props) {
             );
             const drawerEndLocation = drawerFrontLong.indexOf(",") - 1;
             const drawerFront = drawerFrontLong.slice(0, drawerEndLocation);
-            const hinge = text.slice(hingeLocation + 16, guideLocation - 3);
-            const guide = text.slice(guideLocation + 16, finishLocation - 3);
-            const material = text.slice(
+            const hinge = await translationOE(text.slice(hingeLocation + 16, guideLocation - 3));
+            const guide = await translationOE(text.slice(guideLocation + 16, finishLocation - 3));
+            const materials = text.slice(
               baseMaterialLocation + 22,
               wallMaterialLocation - 3
             );
+            const interiorLocation = text.slice(
+              baseMaterialLocation + 22,
+              wallMaterialLocation - 3).indexOf('/');
+            const material = await translationOE(materials.slice(0,interiorLocation));
+            const interior = await translationOE(materials.slice(interiorLocation + 1, wallMaterialLocation - 3));
             const finishLong = text.slice(finishLocation + 16);
             const finishEndLocation = finishLong.indexOf('"');
-            const finish = finishLong.slice(0, finishEndLocation);
+            const finish = await finishTranslationOE(finishLong.slice(0, finishEndLocation));
     
-            setCustomer({
+            setHeader({
               projectNum,
               projectName,
               poNum,
@@ -99,6 +113,7 @@ function NewRoomForm(props) {
               hinge,
               guide,
               material,
+              interior,
               finish,
             });
     
@@ -129,11 +144,13 @@ function NewRoomForm(props) {
             return
         };
 
-        const enteredRoomName = roomNameInputRef.current.value;
-        const enteredOrderType = orderTypeInputRef.current.value;
-        const enteredTotalPrice = totalPriceInputRef.current.value;
+        // const enteredRoomName = roomNameInputRef.current.value;
+        // const enteredOrderType = orderTypeInputRef.current.value;
+        // const enteredTotalPrice = totalPriceInputRef.current.value;
 
-        const newOrder = await axios.post('/api/projects/orders', customer);
+        console.log('header', header);
+
+        const newOrder = await axios.post('/api/projects/orders', header);
         const newOrderId = newOrder.data._id;
         console.log('newOrder = ' + newOrderId);
 
@@ -158,28 +175,34 @@ function NewRoomForm(props) {
           lineEntryArray.push({ '_id': lineResponse.data._id });
         });
 
-        console.log(enteredRoomName);
-        console.log(enteredOrderType);
-        console.log(enteredTotalPrice);
-        console.log(newOrderId);
+        // console.log(enteredRoomName);
+        // console.log(enteredOrderType);
+        // console.log(enteredTotalPrice);
+        // console.log(newOrderId);
 
-        const roomData = {
-            roomName: enteredRoomName,
-            orderType: Number(enteredOrderType),
-            orderTotal: Number(enteredTotalPrice),
-            order: newOrderId
-        };
+        // const roomData = {
+        //     roomName: enteredRoomName,
+        //     orderType: Number(enteredOrderType),
+        //     orderTotal: Number(enteredTotalPrice),
+        //     order: newOrderId
+        // };
 
-        console.log(roomData);
+        // console.log(roomData);
 
-        props.addRooms(roomData);
+        // await setRoom({
+        //   ...room,
+        //   ['orderId']: newOrderId});
+        room.orderId = newOrderId;
+        console.log(room);
+
+        props.addRooms(room);
         setShowDropZone(false);
         setRoom({
-            name: '',
-            type: 1,
-            total: 0
+            roomName: '',
+            orderType: '',
+            orderTotal: 0
         });
-        setCustomer([]);
+        setHeader([]);
         setLines([]);
     }
 
@@ -188,23 +211,72 @@ function NewRoomForm(props) {
         setShowDropZone(!showDropZone);
     }
 
-    const nameChangeHandler = (e) => {
-        setRoom(prevState => ({
-            ...prevState, name: e.target.value
-        }));
-    };
+    // const nameChangeHandler = (e) => {
+    //     setRoom(prevState => ({
+    //         ...prevState, name: e.target.value
+    //     }));
+    // };
 
-    const totalChangeHandler = (e) => {
-        console.log(e.target.value);
-        setRoom(prevState => ({
-            ...prevState,
-            total: e.target.value
-        }));
-    }
+    // const totalChangeHandler = (e) => {
+    //     console.log(e.target.value);
+    //     setRoom(prevState => ({
+    //         ...prevState,
+    //         total: e.target.value
+    //     }));
+    // }
+
+    const handleInputChange = (e) => {
+      const { name, value } = e.target;
+      // console.log('name', name);
+      // console.log('value', value);
+      setRoom({
+        ...room,
+        [name]: value
+      });
+    };
 
     return (
         <Fragment>
-        <form className={classes.form}>
+          <Grid item xs={12} sm={6} md={3}>
+            <FormControl sx={{ width: '100%' }}>
+              <TextField 
+                id='room-name'
+                name='roomName'
+                label='Room Name'
+                type='text'
+                value={room.roomName}
+                onChange={handleInputChange}
+              />
+            </FormControl>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <Pulldown
+              area='orderType'
+              areaTitle='Order Type'
+              value={room.orderType}
+              options={props.taxonomies}
+              handleInputChange={handleInputChange}
+              helperText='What kind or type of order is this?'
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <FormControl sx={{ width: '100%' }}>
+              <TextField
+                id='order-total'
+                name='orderTotal'
+                label='Order Total'
+                type='number'
+                value={room.orderTotal}
+                onChange={handleInputChange}
+              />
+              <FormHelperText>What is the dollar total for the order associated with this room/specification group?</FormHelperText>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <Button variant='outlined' onClick={addOrderHandler}>Drop Ord File</Button>
+            <Button variant='outlined' sx={{ mt: 1 }} disabled={lines.length === 0} onClick={addRoomHandler}>Add Room</Button>
+          </Grid>
+        {/* <form className={classes.form}>
             <div className={classes.control}>
                 <label htmlFor='roomName'>Room Name</label>
                 <input type='text' required id='roomName' onChange={nameChangeHandler} value={room.name} ref={roomNameInputRef} />
@@ -222,8 +294,8 @@ function NewRoomForm(props) {
                 <button onClick={addOrderHandler}>Drop ORD</button>
                 <button onClick={addRoomHandler}>+</button>
             </div>
-        </form>
-        {showDropZone && <DropZone onDrop={dropFileHandler} customer={customer} lines={lines} />}
+        </form> */}
+        {showDropZone && <DropZone onDrop={dropFileHandler} customer={header} lines={lines} />}
         </Fragment>
     )
 };

@@ -1,3 +1,5 @@
+
+import { Grid } from '@mui/material';
 import classes from './Order.module.css';
 
 function Order(props) {
@@ -6,7 +8,7 @@ function Order(props) {
     const lines = props.lines;
 
     return (
-        <div>
+        <Grid item xs={12}>
             <div className={classes.orderHeader}>
                 <h2>Wynnbrooke/David Bradley Cabinet Order</h2>
                 <div className={classes.headerLine}>
@@ -51,6 +53,10 @@ function Order(props) {
                     <div className={classes.headerItem}>{customer.material}</div>
                 </div>
                 <div className={classes.headerLine}>
+                    <div className={classes.headerLabel}>Interior</div>
+                    <div className={classes.headerItem}>{customer.interior}</div>
+                </div>
+                <div className={classes.headerLine}>
                     <div className={classes.headerLabel}>Finish</div>
                     <div className={classes.headerItem}>{customer.finish}</div>
                 </div>
@@ -85,7 +91,7 @@ function Order(props) {
                 </div>
                 ))}
             </ul>
-        </div>
+        </Grid>
     )
 };
 

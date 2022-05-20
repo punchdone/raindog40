@@ -12,6 +12,7 @@ export default async function handler(req, res) {
         const data = req.body;
         console.log(data);
         const room = await new Room(data).save();
+        console.log('roomId = ', room._id);
         const project = await Project.updateOne({ _id: ObjectId(projectId) },
             { $addToSet: { rooms: room._id }}
         );

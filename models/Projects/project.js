@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 mongoose.Promise = global.Promise;
 const room = require('./room');
+const taxonomy = require('../Product/taxonomy');
 
 const projectSchema = new Schema({
     nid: {
@@ -13,17 +14,19 @@ const projectSchema = new Schema({
     woProjectNum: {
         type: String
     },
-    dealerCode: {
+    channel: {
         type: String
     },
     projectName: {
         type: String
     },
-    specialSauce: {
-        type: String
+    deliveryGeography: {
+        type: Schema.Types.ObjectId,
+        ref: 'taxonomy'
     },
     productLine: {
-        type: String
+        type: Schema.Types.ObjectId,
+        ref: 'taxonomy'
     },
     rooms: [
         {

@@ -1,8 +1,8 @@
-import ProjectModule from '../../components/projects/ProjectModule';
+import ProjectList from '../../components/projects/Production/ProjectList';
 
 function ProjectListPage(props) {
 
-   return <ProjectModule projects={props.projects} />
+   return <ProjectList projects={props.projects} />
 
 };
 

@@ -38,6 +38,12 @@ const finishSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'taxonomy'
     },
+    equivalentOE: {
+        type: String
+    },
+    equivalentRaindog: {
+        type: String
+    },
     images: [
         {
             type: imageSchema
