@@ -1,12 +1,12 @@
-import { ObjectId } from 'mongodb';
-import connectDB from '../../../../connectDB';
-import Project from '../../../../models/Projects/project';
+import connectDB from '../../../../../connectDB';
+import Project from '../../../../../models/Projects/project';
 
 connectDB();
 
-export default async function handler(req, res) {
-    const projectId = req.query.projectId;
-    const project = await Project.find({ _id: ObjectId(projectId) })
+export default async function handler (req, res) {
+    const woProjectNum = req.query.woProjectNum;
+    console.log('woProjectNum = ' + woProjectNum);
+    const project = await Project.find({ woProjectNum })
         .populate({
             path: 'rooms',
             strictPopulate: false,
@@ -19,4 +19,4 @@ export default async function handler(req, res) {
             }
         });
     return res.status(200).json(project);
-};
+}   

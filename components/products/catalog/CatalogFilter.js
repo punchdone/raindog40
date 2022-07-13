@@ -21,7 +21,7 @@ const CatalogFilter = (props) => {
     const fetchHandler = async() => {
         const types = await axios.get("/api/taxonomy");
         setCategories(types.data.filter((type) => type.area === "CabType"));
-        setProductLines(types.data.filter((type) => type.area === "ProductLine"));
+        setProductLines(types.data.filter((type) => type.area === "productLine"));
         setIsLoading(false);
     };
 
