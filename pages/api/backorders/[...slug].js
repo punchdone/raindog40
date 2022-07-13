@@ -1,6 +1,6 @@
 import connectDB from '../../../connectDB';
-import Backorder from ',,/../../models/Backorder/backorder';
-import Comment from '../../../model/Comment/comment';
+import Backorder from '../../../models/Backorder/backorder';
+import Comment from '../../../models/Comment/comment';
 import { ObjectId } from 'mongodb';
 
 connectDB();

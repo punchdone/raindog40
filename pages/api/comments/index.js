@@ -1,5 +1,5 @@
 import connectDB from '../../../connectDB';
-import Comment from '../../../model/Comment/comment';
+import Comment from '../../../models/Comment/comment';
 
 
 connectDB();

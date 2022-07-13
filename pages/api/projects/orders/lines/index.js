@@ -1,6 +1,6 @@
-import connectDB from '../../../../../../connectDB';
-import Order from '../../../../../../models/Projects/order';
-import Line from '../../../../../../models/Projects/line';
+import connectDB from '../../../../../connectDB';
+import Order from '../../../../../models/Projects/order';
+import Line from '../../../../../models/Projects/line';
 import { ObjectId } from 'mongodb';
 
 connectDB();

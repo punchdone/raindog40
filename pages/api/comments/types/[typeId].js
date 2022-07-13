@@ -1,5 +1,5 @@
 import connectDB from '../../../../connectDB';
-import CommentType from '../../../../model/Comment/commentType';
+import CommentType from '../../../../models/Comment/commentType';
 import { ObjectId } from 'mongodb';
 
 connectDB();
