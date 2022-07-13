@@ -25,7 +25,7 @@ function RateList(props) {
             </TableHead>
             <TableBody>
               {props.rates.map((rate) => (
-                <RateItem rate={rate} uoms={props.uoms} />
+                <RateItem key={rate._id} rate={rate} uoms={props.uoms} />
               ))}
             </TableBody>
           </Table>

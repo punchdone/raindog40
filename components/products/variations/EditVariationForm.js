@@ -31,9 +31,9 @@ function EditVariationForm(props) {
 
     console.log(dimensions);
 
-    useEffect(() =>{
-        fetchHandler();
-    }, []);
+    // useEffect(() =>{
+    //     fetchHandler();
+    // }, []);
 
     async function fetchHandler() {
         const types = await axios.get('/api/taxonomy');

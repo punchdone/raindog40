@@ -47,9 +47,9 @@ function EditProductForm(props) {
   console.log(props.product.category);
   console.log(subtypes);
 
-  useEffect(() => {
-    fetchHandler();
-  }, []);
+  // useEffect(() => {
+  //   fetchHandler();
+  // }, []);
 
   async function fetchHandler() {
     const types = await axios.get("/api/taxonomy");

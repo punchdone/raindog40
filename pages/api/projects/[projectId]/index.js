@@ -9,10 +9,10 @@ export default async function handler(req, res) {
     const project = await Project.find({ _id: ObjectId(projectId) })
         .populate({
             path: 'rooms',
-            strictPopulate: false,
+            // strictPopulate: false,
             populate: {
                 path: 'order',
-                strictPopulate: false,
+                // strictPopulate: false,
                 populate: {
                     path: 'lines'
                 }

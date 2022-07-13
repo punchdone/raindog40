@@ -72,8 +72,8 @@ function OrderHeader(props) {
             </div>
             <ul className={classes.orderLines}>
                 {sortedLines.map((line) => (
-                    <li>
-                        <OrderLines key={line._id} line={line} />
+                    <li key={line._id}>
+                        <OrderLines line={line} />
                     </li>
                 ))}
             </ul>

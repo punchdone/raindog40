@@ -15,9 +15,9 @@ const RoomItem = ({ room }) => {
 
     // console.log('room', room);
 
-    useEffect(() => {
-        fetchHandler(room.orderType);
-    }, []);
+    // useEffect(() => {
+    //     fetchHandler(room.orderType);
+    // }, []);
 
     const fetchHandler = async(orderType) => {
         const orderRes = await axios('/api/taxonomy/' + orderType);

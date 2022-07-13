@@ -16,9 +16,9 @@ function RoomItem(props) {
 
     const project = props.project;
 
-    useEffect(() => {
-        fetchDetails(props.dealerCode);
-    }, []);
+    // useEffect(() => {
+    //     fetchDetails(props.dealerCode);
+    // }, []);
 
     const fetchDetails = async (code) => {
         const order = await axios('/api/projects/orders/' + props.room.order);

@@ -6,9 +6,9 @@ function NewSummitOrder(props) {
 
     console.log(props.room);
 
-    useEffect(() => {
-        fetchOrderDetails(props.room.order);
-    }, []);
+    // useEffect(() => {
+    //     fetchOrderDetails(props.room.order);
+    // }, []);
 
     async function fetchOrderDetails(orderNum) {
         const orderDetails = await axios("https://dev-raindog.pantheonsite.io/rest/entity_commerce_order/" +
@@ -27,8 +27,8 @@ function NewSummitOrder(props) {
 
     const lineDetails = 
         lines.map((line) => (
-            <div>
-                <div key={line.line_item_id}>item: {line.line_item_label}  quantity: {line.quantity}</div>
+            <div key={line.line_item_id}>
+                <div>item: {line.line_item_label}  quantity: {line.quantity}</div>
             </div>
         ));
 

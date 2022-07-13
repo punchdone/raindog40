@@ -15,7 +15,7 @@ function BackorderItem(props) {
     const [showComments, setShowComments] = useState(false);
 
     useEffect(() => {
-      channelNameLookup(props.channel);
+      channelNameLookup(110);
     }, []);
 
     async function channelNameLookup(channelId) {

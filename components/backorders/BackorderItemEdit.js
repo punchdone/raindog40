@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import dayjs from 'dayjs';
 
 import classes from "./BackorderItemEdit.module.css";
@@ -37,10 +37,10 @@ const BackorderItemEdit = (props) => {
 
   // console.log(props.backorderLine);
 
-  useEffect(() => {
-    backorderLookup(props.backorderLine);
-    console.log(statusOptions);
-  }, []);
+  // useEffect(() => {
+  //   backorderLookup(props.backorderLine);
+  //   console.log(statusOptions);
+  // }, []);
 
   const backorderLookup = async (backorderId) => {
     const backorderUrl = '/api/backorders/' + backorderId;
@@ -247,7 +247,7 @@ const BackorderItemEdit = (props) => {
   );
 
   const statusCheckboxes = statusOptions.map((statusOptions) => (
-    <div className={classes.items}>
+    <div key={statusOptions.name} className={classes.items}>
         <label 
             htmlFor={statusOptions.name} 
             className={classes.label}

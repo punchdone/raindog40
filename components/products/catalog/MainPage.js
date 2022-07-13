@@ -61,9 +61,8 @@ function MainPage(props) {
     <Box sx={{ flexGrow: 1 }}>
     <Grid container spacing={2}>
       {products.map((product) => (
-        <Grid item xs={6} sm={4} md={2} lg={1}>
+        <Grid key={product._id} item xs={6} sm={4} md={2} lg={1}>
           <CatalogItem 
-              key={product._id} 
               product={product}
               action={variationsHandler}
               actionTitle='Variations'

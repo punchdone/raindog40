@@ -18,9 +18,9 @@ const DoorItem = ({ door, onEdit }) => {
 
     // console.log(door);
 
-    useEffect(() => {
-        fetchHandler();
-      }, []);
+    // useEffect(() => {
+    //     fetchHandler();
+    //   }, []);
 
     const fetchHandler = async() => {
         const typeRes = await axios('/api/taxonomy/' + door.doorType);

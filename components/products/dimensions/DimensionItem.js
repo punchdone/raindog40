@@ -9,9 +9,9 @@ function DimensionItem(props) {
     const [isLoading, setIsLoading] = useState(true);
     const [direction, setDirection] = useState();
 
-    useEffect(() => {
-        lookupFunc(props.dimension.direction)
-    }, []);
+    // useEffect(() => {
+    //     lookupFunc(props.dimension.direction)
+    // }, []);
 
     const lookupFunc = async (directionCode) => {
         const direction = await taxonomyLookup(directionCode);

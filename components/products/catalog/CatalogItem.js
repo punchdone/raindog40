@@ -20,6 +20,8 @@ import classes from "./CatalogItem.module.css";
 // );
 
 function CatalogItem(props) {
+
+  console.log(props);
     // const [modalIsShown, setModalIsShown] = useState(false);
     // const [target, setTarget] = useState();
 

@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useState } from 'react';
 // import Head from 'next/head';
 // import MongoClient from 'mongodb/lib/mongo_client';
 // import { useSession } from "next-auth/client";
@@ -15,11 +15,11 @@ function BackorderPage(props) {
     // console.log('role = ' + role);
     // console.log('channel = ' + channel);
 
-    useEffect(() => {
-    //     backorderHandler(role, channel);
-    // }, [role, channel]);
-        backorderHandler();
-    }, []);
+    // useEffect(() => {
+    // //     backorderHandler(role, channel);
+    // // }, [role, channel]);
+    //     backorderHandler();
+    // }, []);
 
     // const backorderHandler = async (role, channel, received, shipped) => {
         const backorderHandler = async () => {
@@ -108,7 +108,8 @@ function BackorderPage(props) {
         {/* { session && ( */}
         <Fragment>
             {/* <div><h3>{session?.user.name}</h3></div> */}
-            <BackorderList backorders={backorders} onFilter={filterHandler} />
+            <div>This is where the backorder list would be.</div>
+            {/* <BackorderList backorders={backorders} onFilter={filterHandler} /> */}
         </Fragment> 
         {/* ) || <p>Not authorized!</p> */}
         {/* } */}

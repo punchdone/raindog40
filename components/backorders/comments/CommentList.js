@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from 'react';
+import { Fragment, useState } from 'react';
 import classes from './CommentList.module.css'
 import CommentItem from './CommentItem';
 import NewCommentForm from './NewCommentForm';
@@ -6,9 +6,9 @@ import NewCommentForm from './NewCommentForm';
 function CommentList(props) {
     const [comments, setComments] = useState([]);
     
-    useEffect(() => {
-        setComments(props.comments);
-    }, []);
+    // useEffect(() => {
+    //     setComments(props.comments);
+    // }, []);
 
     const createComment = async (data) => {
 

@@ -37,12 +37,12 @@ function TaxonomyFilter({ areas, filterHandler }) {
         <InputLabel id="taxonomy-area-label">Area</InputLabel>
         <Select
           labelId="taxonomy-area-label"
-          id="taxonomy-area-seelct"
+          id="taxonomy-area-select"
         //   value={areaFilter}
           label="Area"
           onChange={handleChange}
         >
-          <MenuItem value="none"></MenuItem>
+          <MenuItem key="na" value="none"></MenuItem>
           {areaOptions}
         </Select>
         <FormHelperText>Select the area you want to focus on.</FormHelperText>

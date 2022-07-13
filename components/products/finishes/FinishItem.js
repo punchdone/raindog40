@@ -15,9 +15,9 @@ const FinishItem = ({ finish }) => {
     const [finishTypeTitle, setFinishTypeTitle] = useState();
     const [stockingLevelTitle, setStockingLevelTitle] = useState();
 
-    useEffect(() => {
-        fetchHandler();
-      }, []);
+    // useEffect(() => {
+    //     fetchHandler();
+    //   }, []);
 
     const fetchHandler = async() => {
         const finishResponse = await axios('/api/taxonomy/' + finish.finishType);

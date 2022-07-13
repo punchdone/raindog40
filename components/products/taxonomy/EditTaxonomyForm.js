@@ -66,7 +66,7 @@ const EditTaxonomyForm = (props) => {
             className={classes.areaSelection}
             onChange={handleAreaChange}
           >
-            <MenuItem value="none">''</MenuItem>
+            <MenuItem value="none"> </MenuItem>
             {areaOptions}
           </Select>
         </FormControl>

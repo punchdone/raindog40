@@ -76,7 +76,7 @@ function Order(props) {
             </div>
             <ul>
                 {lines.map((line) => (
-                <div className={classes.line}>
+                <div key={line[0][0]} className={classes.line}>
                     <div>{line[0][0]}</div>
                     <div>{line[0][1]}</div>
                     <div>{line[0][7]}</div>

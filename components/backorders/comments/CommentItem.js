@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import dayjs from 'dayjs';
 
 import classes from './CommentItem.module.css';
@@ -9,9 +9,9 @@ function CommentItem(props) {
     const [contentType, setContentType] = useState();
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        commentLookup(props.author, props.type);
-    }, []);
+    // useEffect(() => {
+    //     commentLookup(props.author, props.type);
+    // }, []);
 
     const commentLookup = async (authorId, typeId) => {
         const userUrl = '/api/users/' + authorId;
